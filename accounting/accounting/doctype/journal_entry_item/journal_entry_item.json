@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "creation": "2021-05-19 08:55:38.562796",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "account",
+  "party",
+  "debit",
+  "credit",
+  "description_of_transaction"
+ ],
+ "fields": [
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Link",
+   "label": "Party",
+   "options": "Party"
+  },
+  {
+   "fieldname": "debit",
+   "fieldtype": "Currency",
+   "label": "Debit"
+  },
+  {
+   "fieldname": "credit",
+   "fieldtype": "Currency",
+   "label": "Credit"
+  },
+  {
+   "fieldname": "description_of_transaction",
+   "fieldtype": "Data",
+   "label": "Description of transaction"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2021-05-19 08:56:24.858150",
+ "modified_by": "Administrator",
+ "module": "Accounting",
+ "name": "Journal Entry Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
