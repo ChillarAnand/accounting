@@ -1,6 +1,7 @@
 ## Accounting
 
-ac
+DIY Accounting app for ERPNext.
+
 
 #### License
 
