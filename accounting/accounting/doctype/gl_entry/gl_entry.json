@@ -15,7 +15,7 @@
   "debit",
   "credit",
   "section_break_10",
-  "vourcher_type",
+  "voucher_type",
   "voucher_no",
   "section_break_13",
   "remarks"
@@ -71,16 +71,10 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "vourcher_type",
-   "fieldtype": "Link",
-   "label": "Voucher Type",
-   "options": "DocType"
-  },
-  {
    "fieldname": "voucher_no",
    "fieldtype": "Dynamic Link",
    "label": "Voucher No",
-   "options": "vourcher_type"
+   "options": "voucher_type"
   },
   {
    "fieldname": "section_break_13",
@@ -90,11 +84,17 @@
    "fieldname": "remarks",
    "fieldtype": "Small Text",
    "label": "Remarks"
+  },
+  {
+   "fieldname": "voucher_type",
+   "fieldtype": "Link",
+   "label": "Voucher Type",
+   "options": "DocType"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-19 09:15:21.568357",
+ "modified": "2021-05-20 15:34:33.287466",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "GL Entry",

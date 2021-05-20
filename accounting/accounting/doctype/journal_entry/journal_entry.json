@@ -16,7 +16,8 @@
   "column_break_9",
   "total_credit",
   "difference",
-  "section_break_12"
+  "section_break_12",
+  "amended_from"
  ],
  "fields": [
   {
@@ -71,11 +72,21 @@
   {
    "fieldname": "section_break_12",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Journal Entry",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2021-05-20 13:31:32.568541",
+ "modified": "2021-05-20 14:22:44.972132",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Journal Entry",

@@ -1,7 +1,10 @@
 import frappe
 
 
-def create_gl_entry(doc_type, account, dr, cr):
+def create_gl_entry(doc_type, account, dr, cr, party=None):
+    if not party:
+        party = doc_type.party
+
     options = {
         'doctype': 'GL Entry',
         'voucher_type': doc_type.doctype,
@@ -10,7 +13,7 @@ def create_gl_entry(doc_type, account, dr, cr):
         'account': account,
         'debit_amount': dr,
         'credit_amount': cr,
-        'party': doc_type.party,
+        'party': party,
     }
     print(options)
     gl_entry = frappe.get_doc(options)

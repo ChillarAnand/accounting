@@ -12,12 +12,13 @@
   "posting_date",
   "section_break_5",
   "party_type",
-  "section_break_7",
-  "document_type",
   "party",
-  "account_paid_from",
-  "account_paid_to",
+  "section_break_7",
   "amount",
+  "account_paid_from",
+  "column_break_11",
+  "account_paid_to",
+  "section_break_14",
   "amended_from"
  ],
  "fields": [
@@ -25,7 +26,7 @@
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Naming Series",
-   "options": "PM.####\nPE.####"
+   "options": "ACC-PAY-.YYYY.-"
   },
   {
    "fieldname": "payment_type",
@@ -50,23 +51,17 @@
    "fieldname": "party_type",
    "fieldtype": "Select",
    "label": "Party Type",
-   "options": "Supplier\nCustomer"
+   "options": "Customer\nSupplier"
   },
   {
    "fieldname": "section_break_7",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "document_type",
-   "fieldtype": "Link",
-   "label": "Document Type",
-   "options": "DocType"
-  },
-  {
    "fieldname": "party",
-   "fieldtype": "Dynamic Link",
+   "fieldtype": "Link",
    "label": "Party",
-   "options": "document_type"
+   "options": "Party"
   },
   {
    "fieldname": "account_paid_from",
@@ -84,6 +79,14 @@
    "label": "Amount"
   },
   {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break"
+  },
+  {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
@@ -96,7 +99,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-05-18 18:08:07.759833",
+ "modified": "2021-05-20 11:23:27.540188",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Payment Entry",
