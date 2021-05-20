@@ -7,9 +7,8 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "party",
-  "column_break_3",
   "posting_date",
+  "column_break_3",
   "section_break_5",
   "accounting_entries",
   "section_break_7",
@@ -24,19 +23,14 @@
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Naming Series",
-   "options": "JE.####\nJE.YYYY.####"
-  },
-  {
-   "fieldname": "party",
-   "fieldtype": "Link",
-   "label": "Party",
-   "options": "Party"
+   "options": "ACC-JRN-.YYYY.\nACC-JNE-.YYYY."
   },
   {
    "fieldname": "column_break_3",
    "fieldtype": "Column Break"
   },
   {
+   "default": "Today",
    "fieldname": "posting_date",
    "fieldtype": "Date",
    "label": "Posting Date"
@@ -81,7 +75,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-19 08:56:27.280559",
+ "modified": "2021-05-20 13:31:32.568541",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Journal Entry",
@@ -102,6 +96,5 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "title_field": "naming_series",
  "track_changes": 1
 }
