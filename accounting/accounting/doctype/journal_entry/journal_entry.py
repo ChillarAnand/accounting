@@ -13,7 +13,4 @@ class JournalEntry(Document):
 
 	def on_submit(self):
 		for account in self.accounting_entries:
-			if account.debit:
-				create_gl_entry(self, account.account, account.debit, 0, party=account.party)
-			if account.credit:
-				create_gl_entry(self, account.account, 0, account.credit, party=account.party)
+			create_gl_entry(self, account.account, account.debit, account.credit, party=account.party)
