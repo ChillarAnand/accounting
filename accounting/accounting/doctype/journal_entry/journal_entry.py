@@ -7,7 +7,7 @@ from frappe.model.document import Document
 
 
 class JournalEntry(Document):
-	def validate2(self):
+	def validate(self):
 		if self.difference != 0:
 			frappe.throw('Total debit is not equal to total credit.')
 
