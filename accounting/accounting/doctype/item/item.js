@@ -6,3 +6,7 @@ frappe.ui.form.on('Item', {
 
 	// }
 });
+
+//frappe.form.link_formatters['Item'] = function(value, doc) {
+//    return doc.item_name;
+//}

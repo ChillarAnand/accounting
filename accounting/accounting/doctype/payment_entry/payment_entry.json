@@ -11,10 +11,11 @@
   "column_break_2",
   "posting_date",
   "section_break_5",
-  "party_type",
   "party",
-  "section_break_7",
+  "party_type",
+  "column_break_8",
   "amount",
+  "section_break_7",
   "account_paid_from",
   "column_break_11",
   "account_paid_to",
@@ -39,6 +40,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Today",
    "fieldname": "posting_date",
    "fieldtype": "Date",
    "label": "Posting Date"
@@ -61,22 +63,27 @@
    "fieldname": "party",
    "fieldtype": "Link",
    "label": "Party",
-   "options": "Party"
+   "options": "Party",
+   "reqd": 1
   },
   {
    "fieldname": "account_paid_from",
-   "fieldtype": "Data",
-   "label": "Account Paid From"
+   "fieldtype": "Link",
+   "label": "Account Paid From",
+   "options": "Account"
   },
   {
    "fieldname": "account_paid_to",
-   "fieldtype": "Data",
-   "label": "Account Paid To"
+   "fieldtype": "Link",
+   "label": "Account Paid To",
+   "options": "Account"
   },
   {
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "label": "Amount"
+   "in_list_view": 1,
+   "label": "Amount",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_11",
@@ -94,12 +101,16 @@
    "options": "Payment Entry",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-05-20 11:23:27.540188",
+ "modified": "2021-05-21 09:52:37.236164",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Payment Entry",
