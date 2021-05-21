@@ -19,7 +19,6 @@
    "options": "Item"
   },
   {
-   "default": "1",
    "fieldname": "quantity",
    "fieldtype": "Int",
    "in_list_view": 1,
@@ -43,7 +42,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-05-20 21:30:09.179390",
+ "modified": "2021-05-21 08:52:36.513294",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Sales Invoice Item",

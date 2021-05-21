@@ -2,19 +2,6 @@
 // For license information, please see license.txt
 
 
-frappe.ui.form.on("Sales Invoice Item", {
-	rate: function(frm, cdt, cdn) {
-		frm.set_query("party", function() {
-			return {
-				filters: [
-					["Party", "party_type", "=", "Customer"]
-				]
-			}
-		});
-	}
-});
-
-
 frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
     frm.set_query("party", function() {
         return {
@@ -27,7 +14,7 @@ frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
     frm.set_query("debit_to", function() {
         return {
             "filters": {
-                "parent": "Accounts Receivable"
+                "parent_account": "Accounts Receivable"
             }
         };
     });
@@ -35,11 +22,30 @@ frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
     frm.set_query("income_account", function() {
         return {
             "filters": {
-                "parent": "Income"
+                "parent_account": "Income"
             }
         };
     });
 
+});
+
+
+//frappe.ui.form.on("Sales Invoice Item", {
+//	rate: function(frm, cdt, cdn) {
+//		frm.set_query("party", function() {
+//			return {
+//				filters: [
+//					["Party", "party_type", "=", "Customer"]
+//				]
+//			}
+//		});
+//	}
+//});
+
+
+frappe.ui.form.on('Sales Invoice Item', 'item', function(frm, cdt, cdn) {
+    var item = locals[cdt][cdn];
+    frappe.model.set_value(cdt, cdn, 'quantity', 1);
 });
 
 

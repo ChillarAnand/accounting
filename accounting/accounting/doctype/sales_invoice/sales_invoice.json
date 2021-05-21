@@ -57,12 +57,14 @@
   {
    "fieldname": "total_quantity",
    "fieldtype": "Data",
-   "label": "Total Quantity"
+   "label": "Total Quantity",
+   "read_only": 1
   },
   {
    "fieldname": "total_amount",
    "fieldtype": "Currency",
-   "label": "Total Amount"
+   "label": "Total Amount",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_10",
@@ -107,7 +109,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-05-20 17:19:58.531268",
+ "modified": "2021-05-21 09:34:45.834457",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Sales Invoice",
