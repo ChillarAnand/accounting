@@ -2,10 +2,42 @@
 // For license information, please see license.txt
 
 
+frappe.ui.form.on('Purchase Invoice', 'onload', function(frm){
+    frm.set_query('party', function() {
+        return {
+            'filters': {
+                'party_type': 'Supplier'
+            }
+        };
+    });
+
+    frm.set_query('credit_to', function() {
+        return {
+            'filters': {
+                'parent_account': 'Accounts Payable'
+            }
+        };
+    });
+
+    frm.set_query('expense_account', function() {
+        return {
+            'filters': {
+                'parent_account': 'Expense'
+            }
+        };
+    });
+
+});
+
+
 frappe.ui.form.on('Purchase Invoice Item', {
     quantity: function(frm, cdt, cdn) {
         var child = locals[cdt][cdn];
-        frappe.model.set_value(cdt, cdn, "amount", child.quantity*child.rate);
+        frappe.model.set_value(cdt, cdn, "amount", child.quantity * child.rate);
+    },
+    item: function(frm, cdt, cdn) {
+        var child = locals[cdt][cdn];
+        frappe.model.set_value(cdt, cdn, "quantity", 1);
     }
 });
 

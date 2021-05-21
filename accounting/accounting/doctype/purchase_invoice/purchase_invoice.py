@@ -8,7 +8,5 @@ from frappe.model.document import Document
 
 class PurchaseInvoice(Document):
 	def on_submit(self):
-		print('---------------')
-		print(self)
-		create_gl_entry(self, self.credit_to, self.total_amount, 0)
-		create_gl_entry(self, self.expense_account, 0, self.total_amount)
+		create_gl_entry(self, self.expense_account, self.total_amount, 0)
+		create_gl_entry(self, self.credit_to, 0, self.total_amount)
