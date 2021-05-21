@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "autoname": "field:party_name",
  "creation": "2021-05-17 14:55:49.133016",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -39,7 +40,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-19 09:24:10.697187",
+ "modified": "2021-05-20 19:22:19.693320",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Party",

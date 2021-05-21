@@ -6,3 +6,8 @@ frappe.ui.form.on('Party', {
 
 	// }
 });
+
+
+frappe.form.link_formatters['Party'] = function(value, doc) {
+    return doc.party_name + ' (' + doc.party_type + ')';
+}
