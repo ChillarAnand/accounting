@@ -20,11 +20,11 @@ frappe.ui.form.on('Purchase Invoice Item', 'amount', function(frm, cdt, cdn) {
 });
 
 
-frappe.ui.form.on('Purchase Invoice Item', 'amount', function(frm, cdt, cdn) {
+frappe.ui.form.on('Purchase Invoice Item', 'quantity', function(frm, cdt, cdn) {
     var items = frm.doc.items;
     var total = 0;
     for(var i in items) {
-        total = total + items[i].amount;
+        total = total + items[i].quantity;
     };
     frm.set_value('total_quantity', total);
 });

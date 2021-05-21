@@ -27,6 +27,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Today",
    "fieldname": "posting_date",
    "fieldtype": "Date",
    "label": "Posting Date",
@@ -77,8 +78,7 @@
    "fieldname": "income_account",
    "fieldtype": "Link",
    "label": "Income Account",
-   "options": "Account",
-   "reqd": 1
+   "options": "Account"
   },
   {
    "fieldname": "party",
@@ -92,7 +92,7 @@
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Naming Series",
-   "options": "SL.INV.####\nINV.####"
+   "options": "ACC-SLI-.YYYY.-"
   },
   {
    "fieldname": "amended_from",
@@ -107,7 +107,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-05-19 17:56:10.273999",
+ "modified": "2021-05-20 17:19:58.531268",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Sales Invoice",
