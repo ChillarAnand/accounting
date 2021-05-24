@@ -14,7 +14,8 @@
   "rgt",
   "is_group",
   "old_parent",
-  "parent_account"
+  "parent_account",
+  "company"
  ],
  "fields": [
   {
@@ -74,12 +75,18 @@
    "fieldtype": "Link",
    "label": "Parent Account",
    "options": "Account"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2021-05-21 08:24:24.202280",
+ "modified": "2021-05-24 14:36:12.304702",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Account",
