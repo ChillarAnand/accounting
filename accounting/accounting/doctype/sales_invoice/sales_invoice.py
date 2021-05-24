@@ -6,9 +6,10 @@ from frappe.model.document import Document
 
 
 class SalesInvoice(Document):
-	def on_submit(self):
-		create_gl_entry(self, self.debit_to, self.total_amount, 0)
-		create_gl_entry(self, self.income_account, 0, self.total_amount)
+        def on_submit(self):
+                create_gl_entry(self, self.debit_to, self.total_amount, 0)
+                create_gl_entry(self, self.income_account, 0, self.total_amount)
 
-	def on_cancel(self):
-		create_revere_gl_entry(self.doctype, self.name)
+        def on_cancel(self):
+                self.ignore_linked_doctypes = ('GL Entry',)
+                create_revere_gl_entry(self.doctype, self.name)

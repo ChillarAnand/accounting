@@ -38,8 +38,8 @@ def create_revere_gl_entry(voucher_type, voucher_no):
         credit_amount = gl_entry.credit_amount
 
         gl_entry.name = None
-        gl_entry.debit_amount = debit_amount
-        gl_entry.credit_amount = credit_amount
+        gl_entry.debit_amount = credit_amount
+        gl_entry.credit_amount = debit_amount
         gl_entry.remarks = 'Cancelled'
         gl_entry.is_cancelled = 1
 
