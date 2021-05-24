@@ -78,9 +78,20 @@ def add_balance_column(data):
 	return data
 
 
+def get_db_filters(filters):
+	db_filters = {}
+
+	from_date = filters.get('from_date')
+	to_date = filters.get('to_date')
+	db_filters["posting_date"] = ["between", [from_date, to_date]]
+	# db_filters = [["posting_date", "between", [from_date, to_date]]]
+
+	return db_filters
+
+
 def get_data(filters):
-	data = frappe.get_all('GL Entry', fields=['*'])
+	filters = get_db_filters(filters)
+	data = frappe.get_all('GL Entry', fields=['*'], filters=filters)
 	data = add_balance_column(data)
-	print(data)
 
 	return data
