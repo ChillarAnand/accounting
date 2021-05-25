@@ -1,15 +1,10 @@
 # Copyright (c) 2013, ac and contributors
 # For license information, please see license.txt
 
-# import frappe
 from pprint import pprint
 
 import frappe
 from frappe import _
-
-
-def get_data(account_type, date_range):
-	pass
 
 
 def execute(filters=None):
@@ -38,15 +33,33 @@ def execute(filters=None):
 
 	accounts = indent_accounts(accounts)
 
-	data = get_balances(accounts, date_range)
+	accounts = get_balances(accounts, date_range)
+	accounts = propagate_balances(accounts)
 
-	pprint(data)
-	print('=========')
+	data = accounts
+	# pprint(accounts)
+	# print('=========')
 
 	return columns, data
 
 
-def get_accounts(company=None, account_type=None):
+def get_children(accounts, account):
+	children = []
+	for _account in accounts:
+		if _account['parent_account'] == account['name']:
+			children.append(_account)
+	return children
+
+
+def propagate_balances(accounts):
+	for account in accounts:
+		if account['balance'] is None:
+			account['balance'] = get_cumulative_balance(accounts, account)
+
+	return accounts
+
+
+def get_accounts(account_type=None):
 	filters = {}
 
 	if account_type:
@@ -71,24 +84,39 @@ def get_account_balance(account, date_range):
 	return result[0][0]
 
 
+def get_cumulative_balance(accounts, account):
+	children = get_children(accounts, account)
+
+	if not children:
+		return account['balance']
+
+	for child in children:
+		if child['balance'] is None:
+			child['balance'] = get_cumulative_balance(accounts, child)
+
+	balance = 0
+	for child in children:
+		balance += child['balance']
+
+	return balance
+
 def get_balances(accounts, date_range):
 	for account in accounts:
 		balance = get_account_balance(account['name'], date_range)
+		if balance and balance < 0:
+			balance = abs(balance)
 		account['balance'] = balance
 
 	return accounts
 
 
 def indent_accounts(accounts):
-	# print(accounts)
-
 	for account in accounts:
-		# print(account)
-		# print('---')
 		depth = 0
 		current_account = account
 		parent = current_account['parent_account']
 		while parent is not None:
+
 			depth += 1
 			current_account = frappe.get_list(
 				'Account', fields=['name', 'parent_account'],
@@ -97,6 +125,5 @@ def indent_accounts(accounts):
 			parent = current_account[0]['parent_account']
 
 		account.indent = depth
-	print(accounts)
 
 	return accounts
