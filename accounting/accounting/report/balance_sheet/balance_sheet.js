@@ -4,6 +4,21 @@
 
 frappe.query_reports["Balance sheet"] = {
 	"filters": [
+	    {
+	        'fieldname': 'filter_type',
+	        'label': 'Filter Type',
+	        'fieldtype': 'Select',
+	        'options': ['Fiscal Year', 'Date Range'],
+	        'default': 'Date Range',
+	        on_change: function() {
+				let filter_type = frappe.query_report.get_filter_value('filter_type');
+				frappe.query_report.toggle_filter_display('fiscal_year', filter_type === 'Date Range');
+				frappe.query_report.toggle_filter_display('from_date', filter_type === 'Fiscal Year');
+				frappe.query_report.toggle_filter_display('to_date', filter_type === 'Fiscal Year');
+				frappe.query_report.refresh();
+			}
+
+	    },
 		{
 			"fieldname":"from_date",
 			"label": __("From Date"),
@@ -19,6 +34,14 @@ frappe.query_reports["Balance sheet"] = {
 			"default": frappe.datetime.get_today(),
 			"reqd": 1,
 			"width": "60px"
+		},
+		{
+			"fieldname":"fiscal_year",
+			"label": __("Year"),
+			"fieldtype": "Link",
+			"options": "Fiscal Year",
+			"width": "60px",
+			"hidden": 1,
 		}
 	],
 
