@@ -39,7 +39,7 @@
   },
   {
    "fieldname": "posting_date",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "Posting Date"
   },
   {
@@ -94,7 +94,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-24 16:02:24.619378",
+ "modified": "2021-05-25 09:20:29.811618",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "GL Entry",

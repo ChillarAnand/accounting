@@ -74,7 +74,7 @@ def get_columns():
 
 def add_balance_column(data):
 	for row in data:
-		row.balance = row.debit - row.credit
+		row.balance = (row.debit or 0) - (row.credit or 0)
 	return data
 
 
