@@ -22,12 +22,16 @@ def execute(filters=None):
 		},
 		{
 			'fieldname': 'balance',
-			'lable': _('Balance'),
+			'label': _('Balance'),
 			'fieldtype': 'Currency',
 			'width': '100px',
 		}
 	]
-	accounts = get_accounts(account_type='Asset')
+
+	accounts = []
+	accounts.extend(get_accounts(account_type='Asset'))
+	accounts.extend(get_accounts(account_type='Liability'))
+
 	for account in accounts:
 		account['account'] = account['name']
 

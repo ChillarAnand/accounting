@@ -20,5 +20,14 @@ frappe.query_reports["Balance sheet"] = {
 			"reqd": 1,
 			"width": "60px"
 		}
-	]
+	],
+
+	"formatter": function(value, row, column, data, default_formatter) {
+		value = default_formatter(value, row, column, data);
+		if (data && !data.parent_account) {
+			var $value = $(value).css("font-weight", "bold");
+			value = $value.wrap("<p></p>").parent().html();
+		}
+		return value;
+	},
 };
