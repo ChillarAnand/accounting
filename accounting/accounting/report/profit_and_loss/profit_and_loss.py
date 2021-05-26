@@ -1,10 +1,11 @@
 # Copyright (c) 2013, ac and contributors
 # For license information, please see license.txt
-
+import datetime
 from pprint import pprint
 
 import frappe
 from frappe import _
+from frappe.utils import now
 
 
 def execute(filters=None):
@@ -13,10 +14,22 @@ def execute(filters=None):
         from_date = filters.get('from_date')
         to_date = filters.get('to_date')
     elif filter_type == 'Fiscal Year':
-        fiscal_year = filters.get('fiscal_year')
-        fiscal_year = frappe.get_all('Fiscal Year', fields=['*'], filters={'year_name': fiscal_year})
-        from_date = fiscal_year[0].start_date
-        to_date = fiscal_year[0].end_date
+        try:
+            fiscal_year = filters.get('fiscal_year')
+            fiscal_year = frappe.get_all('Fiscal Year', fields=['*'], filters={'year_name': fiscal_year})
+            from_date = fiscal_year[0].start_date
+            to_date = fiscal_year[0].end_date
+        except:
+            now = datetime.datetime.now()
+            year = now.year
+            month = now.month
+
+            if month > 3:
+                from_date = '{}-04-01'.format(year)
+                to_date = '{}-03-31'.format(year + 1)
+            else:
+                from_date = '{}-04-01'.format(year - 1)
+                to_date = '{}-03-31'.format(year)
 
     date_range = [from_date, to_date]
 
