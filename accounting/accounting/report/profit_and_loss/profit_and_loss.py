@@ -8,8 +8,16 @@ from frappe import _
 
 
 def execute(filters=None):
-    from_date = filters.get('from_date')
-    to_date = filters.get('to_date')
+    filter_type = filters.get('filter_type')
+    if filter_type == 'Date Range':
+        from_date = filters.get('from_date')
+        to_date = filters.get('to_date')
+    elif filter_type == 'Fiscal Year':
+        fiscal_year = filters.get('fiscal_year')
+        fiscal_year = frappe.get_all('Fiscal Year', fields=['*'], filters={'year_name': fiscal_year})
+        from_date = fiscal_year[0].start_date
+        to_date = fiscal_year[0].end_date
+
     date_range = [from_date, to_date]
 
     columns = [
