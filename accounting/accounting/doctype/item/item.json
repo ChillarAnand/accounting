@@ -1,4 +1,5 @@
 {
+ "_liked_by": "[\"Administrator\"]",
  "actions": [],
  "autoname": "field:item_name",
  "creation": "2021-05-17 14:45:07.015094",
@@ -10,7 +11,10 @@
   "item_name",
   "unit",
   "rate",
-  "data_5"
+  "website_section",
+  "show_in_website",
+  "image",
+  "route"
  ],
  "fields": [
   {
@@ -40,13 +44,30 @@
    "label": "Standard Selling Rate"
   },
   {
-   "fieldname": "data_5",
-   "fieldtype": "Data"
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "website_section",
+   "fieldtype": "Section Break",
+   "label": "Website"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_in_website",
+   "fieldtype": "Check",
+   "label": "Show in website"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-21 08:48:55.090208",
+ "modified": "2021-05-27 11:26:22.712106",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Item",
