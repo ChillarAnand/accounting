@@ -1,11 +1,10 @@
 # Copyright (c) 2013, ac and contributors
 # For license information, please see license.txt
+
 import datetime
-from pprint import pprint
 
 import frappe
 from frappe import _
-from frappe.utils import now
 
 
 def execute(filters=None):

@@ -41,6 +41,7 @@ frappe.query_reports["Balance sheet"] = {
 			"fieldtype": "Link",
 			"options": "Fiscal Year",
 			"width": "60px",
+			"default": frappe.defaults.get_user_default("fiscal_year"),
 			"hidden": 1,
 		}
 	],

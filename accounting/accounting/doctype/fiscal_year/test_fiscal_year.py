@@ -17,7 +17,7 @@ class TestFiscalYear(unittest.TestCase):
 			'end_date': '2022-03-31',
 		}
 
-	def test_start_date_should_be_less_than_end_date(self):
+	def test_create_fiscal_year(self):
 		fiscal_year = get_or_create_doc(params=self.json)
 		assert fiscal_year
 
