@@ -11,6 +11,7 @@
   "item_name",
   "unit",
   "rate",
+  "description",
   "website_section",
   "show_in_website",
   "image",
@@ -40,7 +41,7 @@
   },
   {
    "fieldname": "rate",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "label": "Standard Selling Rate"
   },
   {
@@ -63,11 +64,16 @@
    "fieldname": "route",
    "fieldtype": "Data",
    "label": "Route"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-27 11:26:22.712106",
+ "modified": "2021-05-27 17:17:43.211869",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Item",
