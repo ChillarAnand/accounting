@@ -14,23 +14,29 @@
   {
    "fieldname": "year_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Year Name",
+   "reqd": 1,
    "unique": 1
   },
   {
    "fieldname": "start_date",
    "fieldtype": "Date",
-   "label": "Start Date"
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
   },
   {
    "fieldname": "end_date",
    "fieldtype": "Date",
-   "label": "End Date"
+   "in_list_view": 1,
+   "label": "End Date",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-25 10:10:23.789635",
+ "modified": "2021-05-31 14:54:02.570137",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Fiscal Year",
