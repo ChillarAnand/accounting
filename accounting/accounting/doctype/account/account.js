@@ -2,7 +2,13 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Account', {
-	// refresh: function(frm) {
-
-	// }
+	setup: function(frm) {
+        frm.set_query('parent_account', function (){
+            return {
+                'filters': {
+                    'is_group': 1,
+                }
+            }
+        })
+	}
 });
