@@ -10,6 +10,7 @@ from tests.utils import get_or_create_doc
 class SalesInvoice(Document):
 	def validate(self):
 		self.pre_fill()
+		self.validate_dates()
 
 	def on_submit(self):
 		create_gl_entry(self, self.debit_to, self.total_amount, 0)
@@ -25,10 +26,11 @@ class SalesInvoice(Document):
 			item.update({'amount': flt(item.rate) * flt(item.quantity)})
 			self.total_quantity += flt(item.quantity)
 			self.total_amount += flt(item.amount)
-			print(self.total_amount)
 
-		# self.save()
-
+	def validate_dates(self):
+		if self.payment_due_date and self.payment_due_date < self.posting_date:
+			frappe.throw('Payment due date cannot be before posting date.')
+		
 	def add_item(self, new_item, quantity=1):
 		if not self.items:
 			self.set('items', [{'item': new_item.name, 'quantity': quantity}])
