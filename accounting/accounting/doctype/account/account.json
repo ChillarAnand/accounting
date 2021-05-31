@@ -8,33 +8,28 @@
  "field_order": [
   "account_name",
   "account_number",
-  "account_type",
+  "root_type",
   "opening_balance",
   "lft",
   "rgt",
   "is_group",
+  "column_break_8",
+  "company",
   "old_parent",
-  "parent_account",
-  "company"
+  "parent_account"
  ],
  "fields": [
   {
    "fieldname": "account_name",
    "fieldtype": "Data",
    "label": "Account Name",
+   "reqd": 1,
    "unique": 1
   },
   {
    "fieldname": "account_number",
    "fieldtype": "Data",
-   "label": "Account Number"
-  },
-  {
-   "fieldname": "account_type",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Account Type",
-   "options": "Asset\nIncome\nLiability\nExpense",
+   "label": "Account Number",
    "reqd": 1
   },
   {
@@ -80,13 +75,26 @@
    "fieldname": "company",
    "fieldtype": "Link",
    "label": "Company",
-   "options": "Company"
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "root_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Root Type",
+   "options": "Asset\nIncome\nLiability\nExpense",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2021-05-24 14:36:12.304702",
+ "modified": "2021-05-31 14:57:50.745697",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Account",
@@ -106,7 +114,7 @@
    "write": 1
   }
  ],
- "search_fields": "account_type",
+ "search_fields": "root_type",
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "account_name",

@@ -14,7 +14,8 @@ frappe.ui.form.on('Purchase Invoice', 'onload', function(frm){
     frm.set_query('credit_to', function() {
         return {
             'filters': {
-                'parent_account': 'Accounts Payable'
+                'root_type': 'Accounts Payable',
+                'is_group': 0,
             }
         };
     });
@@ -22,7 +23,8 @@ frappe.ui.form.on('Purchase Invoice', 'onload', function(frm){
     frm.set_query('expense_account', function() {
         return {
             'filters': {
-                'parent_account': 'Expense'
+                'root_type': 'Expense',
+                'is_group': 0,
             }
         };
     });

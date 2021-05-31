@@ -14,7 +14,8 @@ frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
     frm.set_query("debit_to", function() {
         return {
             "filters": {
-                "parent_account": "Accounts Receivable"
+                "root_type": "Accounts Receivable",
+                'is_group': 0,
             }
         };
     });
@@ -22,7 +23,8 @@ frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
     frm.set_query("income_account", function() {
         return {
             "filters": {
-                "parent_account": "Income"
+                "root_type": "Income",
+                'is_group': 0,
             }
         };
     });
