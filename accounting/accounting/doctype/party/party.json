@@ -8,6 +8,7 @@
  "field_order": [
   "party_type",
   "party_name",
+  "column_break_3",
   "email_id",
   "mobile_number"
  ],
@@ -25,6 +26,7 @@
    "fieldname": "party_name",
    "fieldtype": "Data",
    "label": "Party Name",
+   "reqd": 1,
    "unique": 1
   },
   {
@@ -36,11 +38,15 @@
    "fieldname": "mobile_number",
    "fieldtype": "Data",
    "label": "Mobile Number"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-20 19:22:19.693320",
+ "modified": "2021-05-31 11:38:24.926610",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Party",

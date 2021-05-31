@@ -8,6 +8,7 @@
  "field_order": [
   "naming_series",
   "party",
+  "status",
   "column_break_2",
   "posting_date",
   "payment_due_date",
@@ -104,12 +105,18 @@
    "options": "Sales Invoice",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nCancelled\nPaid\nUnpaid\nOverdue"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-05-31 15:01:49.690350",
+ "modified": "2021-05-31 18:37:43.587665",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Sales Invoice",

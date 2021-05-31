@@ -6,13 +6,13 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "root_type",
   "account_name",
   "account_number",
-  "root_type",
+  "is_group",
   "opening_balance",
   "lft",
   "rgt",
-  "is_group",
   "column_break_8",
   "company",
   "old_parent",
@@ -35,7 +35,8 @@
   {
    "fieldname": "opening_balance",
    "fieldtype": "Data",
-   "label": "Opening Balance"
+   "label": "Opening Balance",
+   "set_only_once": 1
   },
   {
    "fieldname": "lft",
@@ -62,8 +63,10 @@
   {
    "fieldname": "old_parent",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Old Parent",
-   "options": "Account"
+   "options": "Account",
+   "read_only": 1
   },
   {
    "fieldname": "parent_account",
@@ -94,7 +97,7 @@
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2021-05-31 14:57:50.745697",
+ "modified": "2021-05-31 18:14:35.145428",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Account",
