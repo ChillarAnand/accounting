@@ -25,13 +25,20 @@ def create_revere_gl_entry(voucher_type, voucher_no):
         'voucher_type': voucher_type,
         'voucher_no': voucher_no,
     }
-    print(filters)
     gl_entries = frappe.get_all('GL Entry', filters=filters, fields=['*'])
 
-    frappe.db.sql("""UPDATE `tabGL Entry` SET is_cancelled = 1,
-        modified=%s, modified_by=%s
-        where voucher_type=%s and voucher_no=%s and is_cancelled = 0""",
-                  (now(), frappe.session.user, gl_entries[0].voucher_type, gl_entries[0].voucher_no))
+    frappe.db.sql("""
+    UPDATE
+        `tabGL Entry`
+    SET
+        is_cancelled = 1,
+        modified=%s,
+        modified_by=%s
+    WHERE
+        voucher_type=%s and
+        voucher_no=%s and
+        is_cancelled = 0
+    """, (now(), frappe.session.user, gl_entries[0].voucher_type, gl_entries[0].voucher_no))
 
     for gl_entry in gl_entries:
         debit_amount = gl_entry.debit_amount
