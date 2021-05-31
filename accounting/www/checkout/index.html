@@ -1,0 +1,23 @@
+<h1>Invoice</h1>
+
+<div class="container">
+    Invoice Number: {{ invoice.name }}
+    <br/>
+
+    {% for item in invoice.items %}
+
+    <div class="card-body">
+        <h5 class="card-title">{{ frappe.db.get_value('Item', item.item, 'name') }}</h5>
+        <h5 class="card-text">{{ frappe.db.get_value('Item', item.item, 'description') }}</h5>
+        <h5 class="card-text">{{ frappe.db.get_value('Item', item.item, 'rate') }} x {{ item.quantity }} = {{ item.amount }} </h5>
+
+    </div>
+
+    {% endfor %}
+
+    <h5 class="card-title">Total price:      {{ invoice.total_amount }} </h5>
+
+    <div class="row">
+        <button class="btn btn-primary">Buy Now</button>
+    </div>
+</div>
