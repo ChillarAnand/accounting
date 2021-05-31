@@ -6,7 +6,6 @@ frappe.ready(function () {
             args: {
                 'invoice_name': $(e.currentTarget).data('invoice-name'),
             }
-
-            })
+        })
     })
 })

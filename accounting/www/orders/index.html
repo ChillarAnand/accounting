@@ -1,0 +1,37 @@
+<h1>Orders</h1>
+
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Order Date
+            </th>
+            <th>
+                Invoice
+            </th>
+        </tr>
+
+        {% for order in orders %}
+        <tr>
+            <td>
+                {{ order.name }}
+            </td>
+            <td>
+                {{ order.posting_date }}
+            </td>
+            <td>
+                <a href="/api/method/frappe.utils.print_format.download_pdf?doctype=Sales%20Invoice&name={{order.name}}">
+                    <button class="btn btn-primary download-invoice">
+                        Download Invoice
+                    </button>
+                </a>
+
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
