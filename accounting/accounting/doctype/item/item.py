@@ -6,17 +6,3 @@ from frappe.model.document import Document
 
 class Item(Document):
 	pass
-	
-	# def before_submit(self):
-	# 	self.unique_validation()
-
-	# def unique_validation(self):
-	# 	item = frappe.get_doc({
-	# 		"doctype": "Item",
-	# 		"code": self.code,
-	# 	})
-	# 	if item:
-	# 		frappe.throw("Item with code {} already exists".format(self.code))
-
-
-

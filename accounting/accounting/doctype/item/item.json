@@ -1,7 +1,8 @@
 {
- "_liked_by": "[\"Administrator\"]",
+ "_comments": "[]",
+ "_liked_by": "[]",
  "actions": [],
- "autoname": "field:item_name",
+ "autoname": "field:item_code",
  "creation": "2021-05-17 14:45:07.015094",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -9,8 +10,10 @@
  "field_order": [
   "item_code",
   "item_name",
+  "column_break_3",
   "unit",
   "rate",
+  "section_break_6",
   "description",
   "website_section",
   "show_in_website",
@@ -37,7 +40,8 @@
    "fieldname": "unit",
    "fieldtype": "Select",
    "label": "Default Unit of Measurement",
-   "options": "KG\nGram\nTon\nPiece"
+   "options": "KG\nGram\nTon\nPiece",
+   "reqd": 1
   },
   {
    "fieldname": "rate",
@@ -58,7 +62,7 @@
    "default": "0",
    "fieldname": "show_in_website",
    "fieldtype": "Check",
-   "label": "Show in website"
+   "label": "Show in Website"
   },
   {
    "fieldname": "route",
@@ -69,11 +73,19 @@
    "fieldname": "description",
    "fieldtype": "Small Text",
    "label": "Description"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-27 17:17:43.211869",
+ "modified": "2021-05-31 11:29:03.924174",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Item",
