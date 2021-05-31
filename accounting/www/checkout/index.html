@@ -15,9 +15,9 @@
 
     {% endfor %}
 
-    <h5 class="card-title">Total price:      {{ invoice.total_amount }} </h5>
+    <h5 class="card-title">Total price:  {{ invoice.total_amount }} </h5>
 
     <div class="row">
-        <button class="btn btn-primary">Buy Now</button>
+        <button class="btn btn-primary buy-now" data-invoice-name="{{ invoice.name }}">Buy Now</button>
     </div>
 </div>

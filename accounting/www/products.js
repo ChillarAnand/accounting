@@ -1,7 +1,5 @@
 frappe.ready(function () {
         $('.add-to-cart').on('click', (e) => {
-            console.log('cart');
-                        console.log('cart');
             if (frappe.session.user === 'Guest') {
                 window.location.href = "/login"
             } else {
