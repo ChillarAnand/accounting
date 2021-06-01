@@ -92,9 +92,10 @@
    "label": "Credit"
   }
  ],
+ "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-25 09:20:29.811618",
+ "modified": "2021-05-31 18:57:26.318742",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "GL Entry",
