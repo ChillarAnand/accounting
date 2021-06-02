@@ -62,22 +62,21 @@ class SalesInvoice(Document):
 def add_to_cart(username, item_name):
 	item = frappe.get_doc('Item', item_name)
 
-	# item = frappe.get_value('Item', {'item_name': item_name}, ['name', 'item_code'])
 	user = frappe.get_value('User', {'name': username}, ['name', 'email'], as_dict=1)
 
-	_, party = get_or_create_doc('Party', user['name'])
+	_, party = get_or_create_doc(dt='Party', fields={'party_name': user['name']})
 
 	try:
 		invoice = frappe.get_list('Sales Invoice', filters={
 			'party': party.party_name,
 			'docstatus': 0,
 		})[0]
-		_, invoice = get_or_create_doc('Sales Invoice', invoice['name'])
+		_, invoice = get_or_create_doc(dt='Sales Invoice', dn=invoice['name'])
 	except IndexError:
 		invoice = frappe.new_doc('Sales Invoice')
 		invoice.party = party.party_name
 		invoice.insert()
-		_, invoice = get_or_create_doc('Sales Invoice', invoice.name)
+		_, invoice = get_or_create_doc(dt='Sales Invoice', dn=invoice.name)
 
 	invoice.add_item(item)
 

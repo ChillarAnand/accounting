@@ -1,23 +1,56 @@
-<h1>Invoice</h1>
+<h1>Shopping Cart</h1>
 
 <div class="container">
     Invoice Number: {{ invoice.name }}
     <br/>
 
-    {% for item in invoice.items %}
+    <table class="table">
+        <tr>
+            <th class="col-md-8">Item</th>
+            <th class="col-md-2">Quantity</th>
+            <th class="col-md-2">Subtotal</th>
+        </tr>
 
-    <div class="card-body">
-        <h5 class="card-title">{{ frappe.db.get_value('Item', item.item, 'name') }}</h5>
-        <h5 class="card-text">{{ frappe.db.get_value('Item', item.item, 'description') }}</h5>
-        <h5 class="card-text">{{ frappe.db.get_value('Item', item.item, 'rate') }} x {{ item.quantity }} = {{ item.amount }} </h5>
+        {% for item in invoice.items %}
+        <tr>
+            <td>
+                <h6>
+                    {{ frappe.db.get_value('Item', item.item, 'item_name') }}
+                </h6>
+                {{ frappe.db.get_value('Item', item.item, 'description') }}
+                (Rate: {{ frappe.db.get_value('Item', item.item, 'rate') }})
+                <br/>
 
-    </div>
+            </td>
 
-    {% endfor %}
+            <td>
+                {{ item.quantity }}
+            </td>
 
-    <h5 class="card-title">Total price:  {{ invoice.total_amount }} </h5>
+            <td>
+                <br/>
+                {{ item.amount }}
+            </td>
+        </tr>
+        {% endfor %}
 
-    <div class="row">
-        <button class="btn btn-primary buy-now" data-invoice-name="{{ invoice.name }}">Buy Now</button>
-    </div>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <b>Total: {{ invoice.total_amount }} </b>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <th>
+                <div class="row">
+                    <button class="btn btn-primary buy-now" data-invoice-name="{{ invoice.name }}">Buy Now</button>
+                </div>
+            </th>
+        </tr>
+
+    </table>
 </div>

@@ -15,32 +15,31 @@ import frappe
 #     return created, doc
 
 
-def get_or_create_doc(fields=None, dt=None):
-    if not dt:
-        dt = fields.pop('doctype')
-    
-    key = fields.get('key')
-    dn = None
-    
-    if key:
-        dn = fields[key]
+def get_or_create_doc(fields=None, dt=None, dn=None):
+    if fields:
+        if not dt:
+            dt = fields.pop('doctype')
         
-    if dn:
-        doc = frappe.get_doc(dt, dn)
-        created = False
+        key = fields.get('key')
+        
+        if key:
+            dn = fields[key]
 
-    else:
-        try:
+    try:
+        if dn:
+            doc = frappe.get_doc(dt, dn)
+            created = False
+        else:
             doc = frappe.get_doc(dt, fields)
             created = False
-        except frappe.exceptions.DoesNotExistError as e:
-            doc = frappe.new_doc(dt)
-            if fields:
-                for key, value in fields.items():
-                    setattr(doc, key, value)
-                    
-            doc.insert()
-            doc.save()
-            created = True
+    except frappe.exceptions.DoesNotExistError as e:
+        doc = frappe.new_doc(dt)
+        if fields:
+            for key, value in fields.items():
+                setattr(doc, key, value)
+                
+        doc.insert()
+        doc.save()
+        created = True
 
     return created, doc
