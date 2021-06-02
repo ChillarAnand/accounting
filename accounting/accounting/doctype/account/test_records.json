@@ -1,0 +1,7 @@
+{
+  "doctype": "Account",
+  "root_type": "Asset",
+  "account_name": "Assets",
+  "company_name": "Avilpage",
+  "is_group": true
+}

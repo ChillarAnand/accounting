@@ -1,32 +1,58 @@
 # Copyright (c) 2021, ac and Contributors
 # See license.txt
 
-# import frappe
 import unittest
 
-from frappe import ValidationError
-from tests.utils import get_or_create_doc
+import frappe
+from frappe.exceptions import ValidationError
 
 
 class TestJournalEntry(unittest.TestCase):
-	def setUp(self) -> None:
-		params = {
-			'doctype': 'Journal Entry Item',
-			'key': '',
-
-		}
-		accounting_entries = get_or_create_doc(fields=params)
-
-		self.json = {
-			'doctype': 'Journal Entry',
-			'key': 'naming_series',
-			'naming_series': 'ACC-JRN-TEST-0001',
-			'total_debit': 100,
-			'total_credit': 20,
-			'accounting_entries': ''
-		}
-
-	def aa_test_app_should_raise_error_when_difference_is_not_zero(self):
-		get_or_create_doc(fields=self.json)
-
-		self.assertRaises(ValidationError, get_or_create_doc, fields=self.json)
+	@classmethod
+	def setUpClass(cls) -> None:
+		cls.doctype = 'Journal Entry'
+	
+	def test_journal_entry_validation_errors(self):
+		with self.assertRaises(ValidationError):
+			entries = [{
+				'account': 'SBI',
+				'party': 'Frappe',
+				'debit': 100.00,
+			}]
+			self.create_journal_entry(entries=entries)
+			
+		with self.assertRaises(ValidationError):
+			entries = [
+				{
+					'account': 'SBI',
+					'party': 'Frappe',
+					'debit': 100.00,
+				},
+				{
+					'account': 'SBI',
+					'party': 'Frappe',
+					'debit': 100.00,
+				},
+			]
+			self.create_journal_entry(entries=entries)
+			
+	@classmethod
+	def create_journal_entry(cls, entries=None):
+		journal = frappe.new_doc(cls.doctype)
+		if not entries:
+			entries = [
+				{
+					'account': 'SBI',
+					'party': 'Frappe',
+					'debit': 100.00,
+				},
+				{
+					'account': 'HDFC',
+					'party': 'Frappe',
+					'credit': 100.00,
+				}
+			]
+		journal.set('accounting_entries', entries)
+		journal.insert()
+		
+		return journal
