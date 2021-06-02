@@ -30,26 +30,31 @@ frappe.ui.form.on("Sales Invoice", "onload", function (frm) {
     });
 
     frm.toggle_display("opening_balance", frm.doc.is_group == 1);
+});
 
-    if (frm.doc.docstatus == 1) {
-        frm.add_custom_button(__('Create Payment Entry'), function () {
-            frappe.route_options = {
-                'party': frm.doc.party,
-                'amount': frm.doc.total_amount,
-                'account_paid_from': frm.doc.debit_to,
-            };
-            frappe.set_route('Form', 'Payment Entry', 'new-payment-entry');
-        });
 
-        frm.add_custom_button(__('General Ledger Report'), function () {
-            frappe.route_options = {
-                'voucher_no': frm.doc.name,
-            };
-            frappe.set_route('query-report', 'General Ledger');
-        });
+frappe.ui.form.on('Sales Invoice', {
+    refresh: function (frm) {
+        if (frm.doc.docstatus == 1) {
 
+            frm.add_custom_button(__('Create Payment Entry'), function () {
+                frappe.route_options = {
+                    'party': frm.doc.party,
+                    'amount': frm.doc.total_amount,
+                };
+                frappe.set_route('Form', 'Payment Entry', 'new-payment-entry');
+            });
+
+            frm.add_custom_button(__('General Ledger Report'), function () {
+                frappe.route_options = {
+                    'voucher_no': frm.doc.name,
+                };
+                frappe.set_route('query-report', 'General Ledger');
+            });
+        }
     }
 });
+
 
 frappe.ui.form.on('Sales Invoice', 'is_group', function (frm, cdt, cdn) {
     console.log('aaa');
