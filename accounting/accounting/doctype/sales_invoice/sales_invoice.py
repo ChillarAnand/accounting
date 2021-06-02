@@ -10,6 +10,7 @@ from tests.utils import get_or_create_doc
 class SalesInvoice(Document):
 	def validate(self):
 		self.pre_fill()
+		self.validate_quantity()
 		self.validate_dates()
 
 	def on_submit(self):
@@ -30,7 +31,12 @@ class SalesInvoice(Document):
 	def validate_dates(self):
 		if self.payment_due_date and self.payment_due_date < self.posting_date:
 			frappe.throw('Payment due date cannot be before posting date.')
-		
+	
+	def validate_quantity(self):
+		for item in self.items:
+			if item.quantity < 1:
+				frappe.throw('Item quantity should not be less than 1')
+
 	def add_item(self, new_item, quantity=1):
 		if not self.items:
 			self.set('items', [{'item': new_item.name, 'quantity': quantity}])
@@ -48,8 +54,6 @@ class SalesInvoice(Document):
 		if not new_item_added:
 			self.append('items', {'item': new_item.name, 'quantity': quantity})
 
-		print('------')
-		print(self.total_amount)
 		self.pre_fill()
 		self.save()
 
