@@ -15,7 +15,8 @@ class TestJournalEntry(unittest.TestCase):
 			'key': '',
 
 		}
-		accounting_entries = get_or_create_doc()
+		accounting_entries = get_or_create_doc(fields=params)
+
 		self.json = {
 			'doctype': 'Journal Entry',
 			'key': 'naming_series',
@@ -25,7 +26,7 @@ class TestJournalEntry(unittest.TestCase):
 			'accounting_entries': ''
 		}
 
-	def test_app_should_raise_error_when_difference_is_not_zero(self):
-		get_or_create_doc(self.json)
+	def aa_test_app_should_raise_error_when_difference_is_not_zero(self):
+		get_or_create_doc(fields=self.json)
 
-		self.assertRaises(ValidationError, get_or_create_doc, self.json)
+		self.assertRaises(ValidationError, get_or_create_doc, fields=self.json)
