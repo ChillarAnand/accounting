@@ -109,7 +109,6 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
-   "in_standard_filter": 1,
    "label": "Status",
    "options": "Draft\nCancelled\nPaid\nUnpaid\nOverdue"
   }
@@ -117,7 +116,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-06-03 11:17:30.615036",
+ "modified": "2021-06-07 10:42:07.330711",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Sales Invoice",
