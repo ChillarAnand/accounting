@@ -11,6 +11,10 @@
   "column_break_2",
   "posting_date",
   "section_break_5",
+  "voucher_type",
+  "column_break_7",
+  "voucher_no",
+  "section_break_9",
   "party",
   "party_type",
   "column_break_8",
@@ -20,9 +24,7 @@
   "column_break_11",
   "account_paid_to",
   "section_break_14",
-  "amended_from",
-  "voucher_type",
-  "voucher_no"
+  "amended_from"
  ],
  "fields": [
   {
@@ -123,12 +125,20 @@
    "label": "Voucher No",
    "options": "voucher_type",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-06-07 14:57:17.554501",
+ "modified": "2021-06-07 15:05:14.202052",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Payment Entry",

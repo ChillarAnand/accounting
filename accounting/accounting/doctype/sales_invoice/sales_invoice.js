@@ -41,6 +41,8 @@ frappe.ui.form.on('Sales Invoice', {
                 frappe.route_options = {
                     'party': frm.doc.party,
                     'amount': frm.doc.total_amount,
+                    'voucher_type': 'Sales Invoice',
+                    'voucher_no': frm.doc.name,
                 };
                 frappe.set_route('Form', 'Payment Entry', 'new-payment-entry');
             });
