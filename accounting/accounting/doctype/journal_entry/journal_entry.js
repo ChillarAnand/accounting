@@ -46,3 +46,15 @@ frappe.ui.form.on("Journal Entry", {
         })
     }
 });
+
+
+frappe.ui.form.on('Journal Entry', {
+   refresh: function (frm) {
+       frm.add_custom_button(__('General Ledger Report'), function (){
+           frappe.route_options = {
+               'voucher_no': frm.doc.name,
+           };
+           frappe.set_route('query-report', 'General Ledger');
+       })
+   }
+});
