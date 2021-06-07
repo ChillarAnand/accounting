@@ -63,7 +63,10 @@ def execute(filters=None):
 def get_profit_and_loss(accounts):
     asset = next((account for account in accounts if account['name'] == 'Assets'))
     liability = next((account for account in accounts if account['name'] == 'Liabilities'))
-    balance = asset['balance'] - liability['balance']
+    
+    asset_balance = asset.get('balance') or  0.0
+    liability_balance = liability.get('balance') or  0.0
+    balance = asset_balance - liability_balance
 
     pnl = {
         'account': 'Provisional Profit/Loss',
