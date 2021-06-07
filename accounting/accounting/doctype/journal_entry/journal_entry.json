@@ -93,7 +93,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-06-07 15:13:14.339420",
+ "modified": "2021-06-07 15:56:53.831966",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Journal Entry",
@@ -114,5 +114,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "naming_series",
  "track_changes": 1
 }

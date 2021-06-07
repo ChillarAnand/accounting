@@ -4,6 +4,7 @@
 import datetime
 
 import frappe
+from accounting.accounting.utils import get_fiscal_date_range
 from frappe import _
 
 
@@ -21,15 +22,7 @@ def execute(filters=None):
         except Exception as e:
             print(e)
             now = datetime.datetime.now()
-            year = now.year
-            month = now.month
-
-            if month > 3:
-                from_date = '{}-04-01'.format(year)
-                to_date = '{}-03-31'.format(year + 1)
-            else:
-                from_date = '{}-04-01'.format(year - 1)
-                to_date = '{}-03-31'.format(year)
+            from_date, to_date = get_fiscal_date_range(now)
 
     date_range = [from_date, to_date]
 
@@ -99,8 +92,8 @@ def get_accounts(account_type=None):
     filters = {}
 
     if account_type:
-        filters = {'account_type': ['=', account_type]}
-    fields = ['name', 'parent_account', 'lft', 'account_type', 'account_type', 'is_group']
+        filters = {'root_type': ['=', account_type]}
+    fields = ['name', 'parent_account', 'lft', 'root_type', 'root_type', 'is_group']
 
     accounts = frappe.get_all('Account', fields=fields, filters=filters, order_by='lft')
     return accounts

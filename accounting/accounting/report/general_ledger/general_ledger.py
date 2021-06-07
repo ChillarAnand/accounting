@@ -1,7 +1,10 @@
 # Copyright (c) 2013, ac and contributors
 # For license information, please see license.txt
+import datetime
 
 import frappe
+from accounting.accounting.utils import get_fiscal_date_range
+from frappe.utils import now
 
 
 def execute(filters=None):
@@ -24,7 +27,7 @@ def get_columns():
 			"label": "Posting Date",
 			"fieldname": "posting_date",
 			"fieldtype": "Date",
-			"width": 90
+			"width": 110
 		},
 		{
 			"label": "Account",
@@ -80,11 +83,16 @@ def add_balance_column(data):
 
 def get_db_filters(filters):
 	db_filters = {}
-
+	now = datetime.datetime.now()
 	from_date = filters.get('from_date')
+	if not from_date:
+		from_date, _ = get_fiscal_date_range(now)
+	
 	to_date = filters.get('to_date')
+	if not to_date:
+		_, to_date = get_fiscal_date_range(now)
+	
 	db_filters["posting_date"] = ["between", [from_date, to_date]]
-	# db_filters = [["posting_date", "between", [from_date, to_date]]]
 
 	return db_filters
 
