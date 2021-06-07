@@ -20,7 +20,9 @@
   "column_break_11",
   "account_paid_to",
   "section_break_14",
-  "amended_from"
+  "amended_from",
+  "voucher_type",
+  "voucher_no"
  ],
  "fields": [
   {
@@ -70,13 +72,15 @@
    "fieldname": "account_paid_from",
    "fieldtype": "Link",
    "label": "Account Paid From",
-   "options": "Account"
+   "options": "Account",
+   "reqd": 1
   },
   {
    "fieldname": "account_paid_to",
    "fieldtype": "Link",
    "label": "Account Paid To",
-   "options": "Account"
+   "options": "Account",
+   "reqd": 1
   },
   {
    "fieldname": "amount",
@@ -105,12 +109,26 @@
   {
    "fieldname": "column_break_8",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "voucher_type",
+   "fieldtype": "Link",
+   "label": "Voucher Type",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "voucher_no",
+   "fieldtype": "Dynamic Link",
+   "label": "Voucher No",
+   "options": "voucher_type",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-05-21 09:52:37.236164",
+ "modified": "2021-06-07 14:57:17.554501",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Payment Entry",
@@ -131,5 +149,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "party",
  "track_changes": 1
 }
