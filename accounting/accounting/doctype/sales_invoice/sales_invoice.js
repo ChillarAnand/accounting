@@ -109,8 +109,3 @@ frappe.ui.form.on('Sales Invoice Item', 'quantity', function (frm, cdt, cdn) {
     ;
     frm.set_value('total_quantity', total);
 });
-
-
-frappe.form.link_formatters['Party'] = function (value, doc) {
-    return doc.party_name + ' (' + doc.party_type + ')';
-};
