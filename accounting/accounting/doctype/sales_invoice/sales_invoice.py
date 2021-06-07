@@ -3,7 +3,7 @@
 import frappe
 from accounting.accounting.doctype.gl_entry.utils import create_gl_entry, create_revere_gl_entry
 from frappe.model.document import Document
-from frappe.utils import flt
+from frappe.utils import flt, now
 from tests.utils import get_or_create_doc
 
 
@@ -84,4 +84,7 @@ def add_to_cart(username, item_name):
 @frappe.whitelist(allow_guest=True)
 def buy_now(invoice_name):
 	invoice = frappe.get_doc('Sales Invoice', invoice_name)
+	if not invoice.posting_date:
+		invoice.posting_date = now().date()
+		invoice.save()
 	invoice.submit()

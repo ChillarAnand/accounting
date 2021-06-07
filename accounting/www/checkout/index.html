@@ -1,6 +1,9 @@
 <h1>Shopping Cart</h1>
 
 <div class="container">
+    {% if not invoice.total_amount %}
+    No items added in cart. Please visit <a href="/products">products page</a> and add items.
+    {% else %}
     Invoice Number: {{ invoice.name }}
     <br/>
 
@@ -53,4 +56,7 @@
         </tr>
 
     </table>
+
+    {% endif %}
+
 </div>
