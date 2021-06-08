@@ -60,12 +60,12 @@ def execute(filters=None):
 
 
 def get_profit_and_loss(accounts):
-    asset = next((account for account in accounts if account['name'] == 'Income'))
-    liability = next((account for account in accounts if account['name'] == 'Expense'))
+    income = frappe.get_list('Account', filters={'root_type': 'Income'}, order_by='lft')[0]
+    expense = frappe.get_list('Account', filters={'root_type': 'Expense'}, order_by='lft')[0]
 
-    asset_balance = asset.get('balance') or 0.0
-    liability_balance = liability.get('balance') or 0.0
-    balance = asset_balance - liability_balance
+    income_balance = income.get('balance') or 0.0
+    expense_balance = expense.get('balance') or 0.0
+    balance = income_balance - expense_balance
 
     pnl = {
         'account': 'Provisional Profit/Loss',

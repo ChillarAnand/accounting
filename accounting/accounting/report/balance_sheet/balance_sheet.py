@@ -61,9 +61,9 @@ def execute(filters=None):
 
 
 def get_profit_and_loss(accounts):
-    asset = next((account for account in accounts if account['name'] == 'Assets'))
-    liability = next((account for account in accounts if account['name'] == 'Liabilities'))
-    
+    asset = frappe.get_list('Account', filters={'root_type': 'Asset'}, order_by='lft')[0]
+    liability = frappe.get_list('Account', filters={'root_type': 'Liability'}, order_by='lft')[0]
+
     asset_balance = asset.get('balance') or 0.0
     liability_balance = liability.get('balance') or 0.0
     balance = asset_balance - liability_balance
