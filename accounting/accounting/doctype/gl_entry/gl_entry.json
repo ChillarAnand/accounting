@@ -95,7 +95,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-31 18:57:26.318742",
+ "modified": "2021-06-08 10:45:32.791024",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "GL Entry",
@@ -110,6 +110,16 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "role": "Customer",
    "share": 1,
    "write": 1
   }
